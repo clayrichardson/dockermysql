@@ -7,7 +7,7 @@ end
 
 task :run do
   sh('docker rm mysql; exit 0')
-  sh('docker run -d -name mysql -t -i mysql')
+  sh('docker run -d -name mysql -t -i -p 127.0.0.1:3306:3306/tcp -v /var/docker/mysql0/var:/var mysql')
 end
 
 task :attach do
@@ -16,12 +16,12 @@ end
 
 task :interactive do
   sh('docker rm mysql; exit 0')
-  sh('docker run -name mysql -t -i -v /var/docker/mysql0/var:/var mysql')
+  sh('docker run -name mysql -t -i -p 127.0.0.1:3306:3306/tcp -v /var/docker/mysql0/var:/var mysql')
 end
 
 task :shell do
   sh('docker rm mysql; exit 0')
-  sh('docker run -name mysql -t -i mysql /bin/bash')
+  sh('docker run -name mysql -t -i -p 127.0.0.1:3306:3306/tcp mysql /bin/bash')
 end
 
 task :kill do
