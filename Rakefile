@@ -16,7 +16,7 @@ end
 
 task :interactive do
   sh('docker rm mysql; exit 0')
-  sh('docker run -name mysql -t -i mysql')
+  sh('docker run -name mysql -t -i -v /var/docker/mysql0/var:/var mysql')
 end
 
 task :shell do
@@ -26,5 +26,9 @@ end
 
 task :kill do
   sh('docker ps -q | xargs docker kill')
+end
+
+task :stop do
+  sh('docker ps -q | xargs docker stop')
 end
 

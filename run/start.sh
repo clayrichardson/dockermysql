@@ -1,6 +1,10 @@
 #!/bin/bash
 set -xe
 
+chown -R mysql:mysql /var/lib
+chown -R mysql:mysql /var/log
+chown -R mysql:mysql /var/run
+
 /usr/bin/supervisord
 
 # adapted from: http://stackoverflow.com/a/20932423/1050649

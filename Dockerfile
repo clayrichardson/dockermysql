@@ -9,12 +9,11 @@ RUN apt-get install -qy git
 RUN apt-get install -qy mysql-server
 RUN apt-get install -qy mysql-client
 
-RUN mkdir -p /var/log/supervisor
-
 ADD ./conf /conf
 ADD ./run /run
 
 ADD ./conf/supervisor/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+ADD ./conf/mysql/my.cnf /etc/mysql/my.cnf
 
 EXPOSE 3306/tcp
 
